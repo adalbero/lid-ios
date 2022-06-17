@@ -1,0 +1,11 @@
+num;question;a;b;c;d;solution;area_code;area;theme;image;Tags
+1;Question 1;Red;Green;Blue;Yellow;d;x;Color;Dark;-;
+2;Question 2;Green;Blue;Yellow;Red;b;x;Color;Dark;-;tag1,tag2
+3;Question 3;Blue;Yellow;Red;Green;a;x;Color;Light;-;
+4;Question 4;Yellow;Red;Green;Blue;c;x;Color;Light;-;
+5;Question 5;Berlin;Paris;Madrid;London;b;x;City;Europe;-;
+6;Question 6;Paris;Madrid;London;Berlin;d;x;City;Europe;-;
+7;Question 7;Madrid;London;Berlin;Paris;a;x;City;Europe;-;
+8;Question 8;London;Berlin;Paris;Madrid;b;x;City;Europe;-;
+9;Question 9;Miami;Brasilia;Lima;Atlanta;c;x;City;Americas;-;
+10;Question 10;Brasilia;Lima;Atlanta;Miami;d;x;City;Americas;-;
