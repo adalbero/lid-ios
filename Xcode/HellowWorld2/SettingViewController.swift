@@ -43,9 +43,12 @@ class SettingViewController: UIViewController {
 }
 extension SettingViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //completionHandler = (bundeslaender[indexPath.row])
-        //print(completionHandler)
-        sdelegate?.setBundesland(bundesland: bundeslaender[indexPath.row])
+
+        let secondVC = storyboard?.instantiateViewController(identifier: "second") as! SecondViewController
+        
+        secondVC.userBundesland = bundeslaender[indexPath.row]
+        
+        delegate?.setBundesland(bundesland: bundeslaender[indexPath.row])
         dismiss(animated: true, completion: nil)
         
     }

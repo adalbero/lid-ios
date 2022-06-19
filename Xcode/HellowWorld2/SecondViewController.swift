@@ -40,11 +40,12 @@ class SecondViewController: UIViewController {
      */
     
     @IBAction func didTapSetting(_ sender: Any) {
+        print(userBundesland)
         let vc = storyboard?.instantiateViewController(identifier: "setting") as! SettingViewController
-        vc.modalPresentationStyle = .fullScreen
+        //vc.modalPresentationStyle = .fullScreen
         
-        let bundesland = SetBundeslandDelegate()
-        bundesland.delegate = self
+        //let bundesland = SetBundeslandDelegate()
+        vc.delegate = self
 
         present(vc, animated: true, completion: nil)
         

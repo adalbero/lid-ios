@@ -137,7 +137,7 @@
         <!--Second View Controller-->
         <scene sceneID="6wM-ne-GXt">
             <objects>
-                <viewController id="6DG-N8-55C" customClass="SecondViewController" customModule="HellowWorld2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="second" id="6DG-N8-55C" customClass="SecondViewController" customModule="HellowWorld2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QnG-ZD-OR3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
