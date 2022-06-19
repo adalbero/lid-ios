@@ -16,8 +16,7 @@ class SettingViewController: UIViewController {
     var delegate: SetBundeslandDelegate?
 
     let bundeslaender = ["Brandenburg", "Berlin", "Baden-W\'fcrttemberg", "Bayern", "Bremen", "Hessen", "Hamburg", "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz", "Schleswig-Holstein", "Saarland", "Sachsen", "Sachsen-Anhalt", "Th\'fcringen"]
-    var completionHandler: String = ""
-    
+
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -30,30 +29,18 @@ class SettingViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+//functionality of each Cell
 extension SettingViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        let secondVC = storyboard?.instantiateViewController(identifier: "second") as! SecondViewController
-        
-        secondVC.userBundesland = bundeslaender[indexPath.row]
-        
+        //
         delegate?.setBundesland(bundesland: bundeslaender[indexPath.row])
         dismiss(animated: true, completion: nil)
-        
     }
 }
-
+//apperance of each cell?
 extension SettingViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bundeslaender.count    }
