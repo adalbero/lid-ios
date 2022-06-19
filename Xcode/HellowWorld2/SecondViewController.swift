@@ -43,10 +43,7 @@ class SecondViewController: UIViewController {
         print(userBundesland)
         let vc = storyboard?.instantiateViewController(identifier: "setting") as! SettingViewController
         //vc.modalPresentationStyle = .fullScreen
-        
-        //let bundesland = SetBundeslandDelegate()
         vc.delegate = self
-
         present(vc, animated: true, completion: nil)
         
     }
@@ -64,7 +61,6 @@ class SecondViewController: UIViewController {
                 
                 for i in returnHolder.indices {
                     if returnHolder[i].header == questionSlot.theme{
-                        // DUBUG print(returnHolder[i].header + "; we got here")
                         returnHolder[i].addQuestion(question_to_add: questionSlot)
                     }
                 }
