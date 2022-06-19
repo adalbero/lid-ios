@@ -22,7 +22,6 @@ class SecondViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        //groupBundesland = groupFilter(array_to_filter: questions, key: "Niedersachsen", atribute: "theme")
         questionGroups = createGroups(array: questions, bundesland: userBundesland)
         
         // Do any additional setup after loading the view.
@@ -45,8 +44,8 @@ class SecondViewController: UIViewController {
         //vc.modalPresentationStyle = .fullScreen
         vc.delegate = self
         present(vc, animated: true, completion: nil)
-        
     }
+    
     func createGroups(array: [Questions], bundesland: String) -> [QuestionHolder]{
         var returnHolder = [QuestionHolder]()
         
@@ -87,40 +86,6 @@ class SecondViewController: UIViewController {
         return allBundesland
     }
     
-    
-   /* func groupFilter(array_to_filter: [Questions], key: String, atribute: String) -> [Questions]{
-        let unfiltedArray = array_to_filter
-        var filtedArray = [Questions]()
-        
-        if atribute.lowercased() == "tags"{
-            
-            for rawQuestion in unfiltedArray {
-                if rawQuestion.tags == key{     //fix String == String
-                    filtedArray.append(rawQuestion)
-                }
-            }
-        } else if atribute.lowercased() == "theme" {
-            for rawQuestion in unfiltedArray {
-                if rawQuestion.theme == key{     //fix String == String
-                    filtedArray.append(rawQuestion)
-                }
-            }
-        } else if atribute.lowercased() == "area" {
-            for rawQuestion in unfiltedArray {
-                if rawQuestion.area == key{     //fix String == String
-                    filtedArray.append(rawQuestion)
-                }
-            }
-        } else if atribute.lowercased() == "area_code" {
-            for rawQuestion in unfiltedArray {
-                if rawQuestion.area_code == key{     //fix String == String
-                    filtedArray.append(rawQuestion)
-                }
-            }
-        }
-        
-        return filtedArray
-    }*/
     
 }
 
