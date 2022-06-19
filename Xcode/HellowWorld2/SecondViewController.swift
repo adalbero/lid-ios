@@ -22,8 +22,8 @@ class SecondViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        groupBundesland = groupFilter(array_to_filter: questions, key: "Niedersachsen", atribute: "theme")
-        questionGroups = createGroups(array: questions)
+        //groupBundesland = groupFilter(array_to_filter: questions, key: "Niedersachsen", atribute: "theme")
+        questionGroups = createGroups(array: questions, bundesland: userBundesland)
         
         // Do any additional setup after loading the view.
     }
@@ -47,10 +47,10 @@ class SecondViewController: UIViewController {
         present(vc, animated: true, completion: nil)
         
     }
-    func createGroups(array: [Questions]) -> [QuestionHolder]{
+    func createGroups(array: [Questions], bundesland: String) -> [QuestionHolder]{
         var returnHolder = [QuestionHolder]()
         
-        var temp: [String] = []
+        var temp: [String] = groupFilterBundesland(selected_Bundesland: bundesland)
         
         for questionSlot in array{
             
@@ -76,9 +76,19 @@ class SecondViewController: UIViewController {
     }
     
     
+    func groupFilterBundesland(selected_Bundesland: String) -> [String]{
+        var allBundesland = ["Brandenburg", "Berlin", "Baden-Württemberg", "Bayern", "Bremen", "Hessen", "Hamburg", "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz", "Schleswig-Holstein", "Saarland", "Sachsen", "Sachsen-Anhalt", "Thüringen"]
+        for i in allBundesland.indices{
+            if allBundesland[i] == selected_Bundesland{
+                allBundesland.remove(at: i)
+                break
+            }
+        }
+        return allBundesland
+    }
     
     
-    func groupFilter(array_to_filter: [Questions], key: String, atribute: String) -> [Questions]{
+   /* func groupFilter(array_to_filter: [Questions], key: String, atribute: String) -> [Questions]{
         let unfiltedArray = array_to_filter
         var filtedArray = [Questions]()
         
@@ -110,7 +120,7 @@ class SecondViewController: UIViewController {
         }
         
         return filtedArray
-    }
+    }*/
     
 }
 
@@ -139,8 +149,9 @@ extension SecondViewController:UITableViewDataSource{
 extension SecondViewController: SetBundeslandDelegate {
     
     func setBundesland(bundesland: String) {
-        self.dismiss(animated: true){
+        self.dismiss(animated: true){ [self] in
             self.userBundesland = bundesland
+            questionGroups = self.createGroups(array: self.questions, bundesland: self.userBundesland)
             self.tableView.reloadData()
         }
     }
