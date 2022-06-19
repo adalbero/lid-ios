@@ -15,7 +15,7 @@ class SettingViewController: UIViewController {
     
     var delegate: SetBundeslandDelegate?
 
-    let bundeslaender = ["Brandenburg", "Berlin", "Baden-W\'fcrttemberg", "Bayern", "Bremen", "Hessen", "Hamburg", "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz", "Schleswig-Holstein", "Saarland", "Sachsen", "Sachsen-Anhalt", "Th\'fcringen"]
+    let bundeslaender = ["Brandenburg", "Berlin", "Baden-Württemberg", "Bayern", "Bremen", "Hessen", "Hamburg", "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz", "Schleswig-Holstein", "Saarland", "Sachsen", "Sachsen-Anhalt", "Thüringen"]
 
     
     @IBOutlet weak var tableView: UITableView!
