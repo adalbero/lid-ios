@@ -71,7 +71,7 @@ class SecondViewController: UIViewController {
         for holder in returnHolder {
             print(holder.header + " - " ,holder.getSize())
         }
-        return returnHolder
+        return returnHolder.sorted(by: {$0.comment > $1.comment})
     }
     
     
@@ -85,8 +85,6 @@ class SecondViewController: UIViewController {
         }
         return allBundesland
     }
-    
-    
 }
 
 extension SecondViewController:UITableViewDelegate{
@@ -113,7 +111,7 @@ extension SecondViewController:UITableViewDataSource{
             cell.backgroundColor = .white
         }
         
-        cell.textLabel?.text = questionGroups[indexPath.row].header
+        cell.textLabel?.text = questionGroups[indexPath.row].header + " (" + String(questionGroups[indexPath.row].getSize()) + ")"
         
         
         
