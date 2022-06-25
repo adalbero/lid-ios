@@ -12,7 +12,9 @@ class SecondViewController: UIViewController {
     var userBundesland: String = "Niedersachsen"
     var groupBundesland: [Questions] = []
     
-    var questionGroups: [QuestionHolder] = []
+    var questionGroups: [[QuestionHolder]] = [[]]
+    
+    var sectionNames: [String] = []
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -46,14 +48,18 @@ class SecondViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
-    func createGroups(array: [Questions], bundesland: String) -> [QuestionHolder]{
-        var returnHolder = [QuestionHolder]()
+    func createGroups(array: [Questions], bundesland: String) -> [[QuestionHolder]]{
+        var returnHolder = [[QuestionHolder]()]
         var topicHolder = [QuestionHolder]()
         var themeHolder = [QuestionHolder]()
         var genericHolder = [QuestionHolder]()
         
         var tempTopic: [String] = groupFilterBundesland(selected_Bundesland: bundesland)
         var tempTheme: [String] = ["Bundesland"]
+        
+        sectionNames.append("Questions")
+        sectionNames.append("Themes")
+        sectionNames.append("Topic")
         
         
         for questionSlot in array{
@@ -92,16 +98,11 @@ class SecondViewController: UIViewController {
         }
         
         genericHolder.append(topicHolder.removeLast())
-        returnHolder.append(contentsOf: genericHolder)
-        returnHolder.append(contentsOf: themeHolder.sorted(by: {$0.header > $1.header}))
-        returnHolder.append(contentsOf: topicHolder.sorted(by: {$0.comment > $1.comment}))
+        returnHolder.append(genericHolder)
+        returnHolder.append(themeHolder.sorted(by: {$0.header > $1.header}))
+        returnHolder.append(topicHolder.sorted(by: {$0.comment > $1.comment}))
 
-        //debug
-        for holder in returnHolder {
-            print(holder.header + " - " ,holder.getSize())
-        }
-        
-        
+ 
         return returnHolder//sorted(by: {$0.comment > $1.comment})
     }
 
@@ -128,29 +129,36 @@ extension SecondViewController:UITableViewDelegate{
 }
 
 extension SecondViewController:UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionNames[section]
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
         return questionGroups.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return questionGroups[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellTest", for: indexPath)
-        if questionGroups[indexPath.row].comment == "Politik in der Demokratie" {
+        if questionGroups[indexPath.section][indexPath.row].comment == "Politik in der Demokratie" {
             cell.backgroundColor = UIColor(red: 0.98, green: 0.87, blue: 0.56, alpha: 1.00)
-        } else if questionGroups[indexPath.row].comment == "Geschichte und Verantwortung" {
+        } else if questionGroups[indexPath.section][indexPath.row].comment == "Geschichte und Verantwortung" {
             cell.backgroundColor = UIColor(red: 0.50, green: 0.84, blue: 0.98, alpha: 1.00)
-        } else if questionGroups[indexPath.row].comment == "Mensch und Gesellschaft" {
+        } else if questionGroups[indexPath.section][indexPath.row].comment == "Mensch und Gesellschaft" {
             cell.backgroundColor = UIColor(red: 0.76, green: 0.88, blue: 0.64, alpha: 1.00)
-        } else if questionGroups[indexPath.row].header == "Politik in der Demokratie" {
+        } else if questionGroups[indexPath.section][indexPath.row].header == "Politik in der Demokratie" {
             cell.backgroundColor = UIColor(red: 0.98, green: 0.87, blue: 0.56, alpha: 1.00)
-        } else if questionGroups[indexPath.row].header == "Geschichte und Verantwortung" {
+        } else if questionGroups[indexPath.section][indexPath.row].header == "Geschichte und Verantwortung" {
             cell.backgroundColor = UIColor(red: 0.50, green: 0.84, blue: 0.98, alpha: 1.00)
-        } else if questionGroups[indexPath.row].header == "Mensch und Gesellschaft" {
+        } else if questionGroups[indexPath.section][indexPath.row].header == "Mensch und Gesellschaft" {
             cell.backgroundColor = UIColor(red: 0.76, green: 0.88, blue: 0.64, alpha: 1.00)
         } else {
             cell.backgroundColor = .white
         }
         
-        cell.textLabel?.text = questionGroups[indexPath.row].header + " (" + String(questionGroups[indexPath.row].getSize()) + ")"
+        cell.textLabel?.text = questionGroups[indexPath.section][indexPath.row].header + " (" + String(questionGroups[indexPath.section][indexPath.row].getSize()) + ")"
         
         
         
