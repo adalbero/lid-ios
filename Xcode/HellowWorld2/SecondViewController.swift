@@ -140,6 +140,12 @@ extension SecondViewController:UITableViewDataSource{
             cell.backgroundColor = UIColor(red: 0.50, green: 0.84, blue: 0.98, alpha: 1.00)
         } else if questionGroups[indexPath.row].comment == "Mensch und Gesellschaft" {
             cell.backgroundColor = UIColor(red: 0.76, green: 0.88, blue: 0.64, alpha: 1.00)
+        } else if questionGroups[indexPath.row].header == "Politik in der Demokratie" {
+            cell.backgroundColor = UIColor(red: 0.98, green: 0.87, blue: 0.56, alpha: 1.00)
+        } else if questionGroups[indexPath.row].header == "Geschichte und Verantwortung" {
+            cell.backgroundColor = UIColor(red: 0.50, green: 0.84, blue: 0.98, alpha: 1.00)
+        } else if questionGroups[indexPath.row].header == "Mensch und Gesellschaft" {
+            cell.backgroundColor = UIColor(red: 0.76, green: 0.88, blue: 0.64, alpha: 1.00)
         } else {
             cell.backgroundColor = .white
         }
