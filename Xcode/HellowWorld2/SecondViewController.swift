@@ -48,32 +48,63 @@ class SecondViewController: UIViewController {
     
     func createGroups(array: [Questions], bundesland: String) -> [QuestionHolder]{
         var returnHolder = [QuestionHolder]()
+        var topicHolder = [QuestionHolder]()
+        var themeHolder = [QuestionHolder]()
+        var genericHolder = [QuestionHolder]()
         
-        var temp: [String] = groupFilterBundesland(selected_Bundesland: bundesland)
+        var tempTopic: [String] = groupFilterBundesland(selected_Bundesland: bundesland)
+        var tempTheme: [String] = ["Bundesland"]
+        
         
         for questionSlot in array{
             
-            if !temp.contains(questionSlot.theme) {
-                temp.append(questionSlot.theme)
-                returnHolder.append(QuestionHolder.init(questions_to_hold: [questionSlot], header: questionSlot.theme, comment: questionSlot.area))
+            //topicHolder Generation
+            if !tempTopic.contains(questionSlot.theme) {
+                tempTopic.append(questionSlot.theme)
+                topicHolder.append(QuestionHolder.init(questions_to_hold: [questionSlot], header: questionSlot.theme, comment: questionSlot.area))
             }else{
                 
-                for i in returnHolder.indices {
-                    if returnHolder[i].header == questionSlot.theme{
-                        returnHolder[i].addQuestion(question_to_add: questionSlot)
+                for i in topicHolder.indices {
+                    if topicHolder[i].header == questionSlot.theme{
+                        topicHolder[i].addQuestion(question_to_add: questionSlot)
                     }
                 }
             }
+            
+            //themeHolder Generation
+            if !tempTheme.contains(questionSlot.area) {
+                tempTheme.append(questionSlot.area)
+                themeHolder.append(QuestionHolder.init(questions_to_hold: [questionSlot], header: questionSlot.area, comment: "by Theme"))
+            }else{
+                
+                for i in themeHolder.indices {
+                    if themeHolder[i].header == questionSlot.area{
+                        themeHolder[i].addQuestion(question_to_add: questionSlot)
+                    }
+                }
+            }
+            
+            //genericHolder Generation
+            if genericHolder.isEmpty{
+                genericHolder.append(QuestionHolder(questions_to_hold: [questionSlot], header: "Alle", comment: "All general Questions"))
+            }
+                
         }
         
+        genericHolder.append(topicHolder.removeLast())
+        returnHolder.append(contentsOf: genericHolder)
+        returnHolder.append(contentsOf: themeHolder.sorted(by: {$0.header > $1.header}))
+        returnHolder.append(contentsOf: topicHolder.sorted(by: {$0.comment > $1.comment}))
+
         //debug
-        
         for holder in returnHolder {
             print(holder.header + " - " ,holder.getSize())
         }
-        return returnHolder.sorted(by: {$0.comment > $1.comment})
+        
+        
+        return returnHolder//sorted(by: {$0.comment > $1.comment})
     }
-    
+
     
     func groupFilterBundesland(selected_Bundesland: String) -> [String]{
         var allBundesland = ["Brandenburg", "Berlin", "Baden-Württemberg", "Bayern", "Bremen", "Hessen", "Hamburg", "Mecklenburg-Vorpommern", "Niedersachsen", "Nordrhein-Westfalen", "Rheinland-Pfalz", "Schleswig-Holstein", "Saarland", "Sachsen", "Sachsen-Anhalt", "Thüringen"]
