@@ -93,6 +93,8 @@ class SecondViewController: UIViewController {
             //genericHolder Generation
             if genericHolder.isEmpty{
                 genericHolder.append(QuestionHolder(questions_to_hold: [questionSlot], header: "Alle", comment: "All general Questions"))
+            } else if questionSlot.area != "Bundesland" {
+                genericHolder[0].addQuestion(question_to_add: questionSlot)
             }
                 
         }
