@@ -14,7 +14,7 @@ class SecondViewController: UIViewController {
     
     var questionGroups: [[QuestionHolder]] = [[]]
     
-    var sectionNames: [String] = []
+    var sectionNames: [String] = [""]
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -134,7 +134,7 @@ extension SecondViewController:UITableViewDataSource{
         return sectionNames[section]
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return questionGroups.count
+        return sectionNames.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return questionGroups[section].count
