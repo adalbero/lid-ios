@@ -100,9 +100,9 @@ class SecondViewController: UIViewController {
         }
         
         genericHolder.append(topicHolder.removeLast())
-        genericHolder.append(QuestionHolder(questions_to_hold: [genericHolder[0].getQuestion(index: Int.random(in: 0...300))], header: "Exercise", comment: "Random questions"))
+        genericHolder.append(QuestionHolder(questions_to_hold: [genericHolder[0].getQuestion(index: Int.random(in: 0...299))], header: "Exercise", comment: "Random questions"))
         for _ in 1...19 {
-            genericHolder[2].addQuestion(question_to_add: genericHolder[0].getQuestion(index: Int.random(in: 0...300)))
+            genericHolder[2].addQuestion(question_to_add: genericHolder[0].getQuestion(index: Int.random(in: 0...299)))
         }
         
         returnHolder.append(genericHolder)
@@ -130,7 +130,7 @@ class SecondViewController: UIViewController {
 
 extension SecondViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print(questionGroups[indexPath.section][indexPath.row].getAllQuestionsString())
         
     }
 }

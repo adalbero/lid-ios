@@ -29,4 +29,13 @@ struct QuestionHolder{
     func getQuestion(index: Int) -> Questions {
         return questionsHolding[index]
     }
+    
+    //debug func
+    func getAllQuestionsString() -> String {
+        var ret: String = ""
+        for questionName in questionsHolding {
+            ret += questionName.question + "\n"
+        }
+        return ret
+    }
 }
