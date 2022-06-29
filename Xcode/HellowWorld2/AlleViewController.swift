@@ -27,9 +27,12 @@ class AlleViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.registerTableViewCell()
+        
         title = "third screen"
         countdownTimerLabel.text = "59:59"
         startCountdownTimer()
+        
         
         
         // Do any additional setup after loading the view.
@@ -68,6 +71,12 @@ class AlleViewController: UIViewController {
         return timeString
     }
     
+    private func registerTableViewCell() {
+        let themeLabel = UINib(nibName: "SecondTableViewCell", bundle: nil)
+        
+        self.tableView.register(themeLabel, forCellReuseIdentifier: "SecondTableViewCell")
+    }
+    
     
     
     
@@ -89,6 +98,10 @@ extension AlleViewController:UITableViewDelegate{
         print("YOU TAPPED ME!")
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
 }
 
 extension AlleViewController:UITableViewDataSource{
@@ -97,10 +110,13 @@ extension AlleViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for:   indexPath)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SecondTableViewCell") as? SecondTableViewCell {
+            return cell
+        }
         
-        cell.textLabel?.text = allQuestions[0].getQuestion(index: indexPath.row).question
+        //cell.textLabel?.text = allQuestions[0].getQuestion(index: indexPath.row).question
         
-        return cell
+        return UITableViewCell()
+
     }
 }

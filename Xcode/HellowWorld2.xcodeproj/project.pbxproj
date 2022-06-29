@@ -23,6 +23,8 @@
 		C774597C2853636400F777EB /* question_list.csv in Resources */ = {isa = PBXBuildFile; fileRef = C774597B2853636300F777EB /* question_list.csv */; };
 		C774597E285A666600F777EB /* QuestionHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774597D285A666600F777EB /* QuestionHolder.swift */; };
 		C7745980285B6B3800F777EB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774597F285B6B3800F777EB /* SettingViewController.swift */; };
+		C7745983286CDE2600F777EB /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7745981286CDE2600F777EB /* SecondTableViewCell.swift */; };
+		C7745984286CDE2600F777EB /* SecondTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7745982286CDE2600F777EB /* SecondTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		C774597B2853636300F777EB /* question_list.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = question_list.csv; sourceTree = "<group>"; };
 		C774597D285A666600F777EB /* QuestionHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionHolder.swift; sourceTree = "<group>"; };
 		C774597F285B6B3800F777EB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		C7745981286CDE2600F777EB /* SecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTableViewCell.swift; sourceTree = "<group>"; };
+		C7745982286CDE2600F777EB /* SecondTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 				C72970FA284E895A0083865F /* AppDelegate.swift */,
 				C72970FC284E895A0083865F /* SceneDelegate.swift */,
 				C72970FE284E895A0083865F /* ViewController.swift */,
+				C7745981286CDE2600F777EB /* SecondTableViewCell.swift */,
+				C7745982286CDE2600F777EB /* SecondTableViewCell.xib */,
 				C729712C284E96620083865F /* NextViewController.swift */,
 				C76FBB14284F481500DC1DCA /* AlleViewController.swift */,
 				C77459772852A40600F777EB /* SecondViewController.swift */,
@@ -252,6 +258,7 @@
 			files = (
 				C7297107284E89650083865F /* LaunchScreen.storyboard in Resources */,
 				C7297104284E89650083865F /* Assets.xcassets in Resources */,
+				C7745984286CDE2600F777EB /* SecondTableViewCell.xib in Resources */,
 				C774597C2853636400F777EB /* question_list.csv in Resources */,
 				C7297102284E895B0083865F /* Main.storyboard in Resources */,
 			);
@@ -279,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C77459782852A40600F777EB /* SecondViewController.swift in Sources */,
+				C7745983286CDE2600F777EB /* SecondTableViewCell.swift in Sources */,
 				C72970FF284E895A0083865F /* ViewController.swift in Sources */,
 				C729712D284E96620083865F /* NextViewController.swift in Sources */,
 				C774597A28534D5F00F777EB /* Questions.swift in Sources */,
