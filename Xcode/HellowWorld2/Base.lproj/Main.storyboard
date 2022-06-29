@@ -156,9 +156,6 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
-                                                <connections>
-                                                    <segue destination="gWz-3k-ZEn" kind="show" id="gJI-FA-fSu"/>
-                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -283,7 +280,7 @@
         <!--Alle View Controller-->
         <scene sceneID="W5M-du-zDG">
             <objects>
-                <viewController id="gWz-3k-ZEn" customClass="AlleViewController" customModule="HellowWorld2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="third" id="gWz-3k-ZEn" customClass="AlleViewController" customModule="HellowWorld2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsv-z1-kPN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,9 +394,6 @@
             <point key="canvasLocation" x="92.753623188405811" y="117.85714285714285"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="gJI-FA-fSu"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="globe.americas" catalog="system" width="128" height="121"/>

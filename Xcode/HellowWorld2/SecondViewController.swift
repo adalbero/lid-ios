@@ -130,7 +130,11 @@ class SecondViewController: UIViewController {
 
 extension SecondViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(questionGroups[indexPath.section][indexPath.row].getAllQuestionsString())
+        let AlleVC = storyboard?.instantiateViewController(identifier: "third") as! AlleViewController
+        AlleVC.allQuestions = [questionGroups[indexPath.section][indexPath.row]]
+        present(AlleVC, animated: true, completion: nil)
+
+       // print(questionGroups[indexPath.section][indexPath.row].getAllQuestionsString())
         
     }
 }
@@ -173,6 +177,8 @@ extension SecondViewController:UITableViewDataSource{
     }
 }
 
+
+ // MARK: - Transfer Data
 extension SecondViewController: SetBundeslandDelegate {
     
     func setBundesland(bundesland: String) {

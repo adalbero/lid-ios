@@ -17,7 +17,8 @@ class AlleViewController: UIViewController {
     var count:Int = 3599
     var isCounting:Bool = false
     
-    let names = ["henry", "Milke", "Sophie", "Toby"]
+    var allQuestions = [QuestionHolder]()
+    //let names = ["henry", "Milke", "Sophie", "Toby"]
     
     
     override func viewDidLoad() {
@@ -92,13 +93,13 @@ extension AlleViewController:UITableViewDelegate{
 
 extension AlleViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return allQuestions[0].getSize()
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for:   indexPath)
         
-        cell.textLabel?.text = names[indexPath.row]
+        cell.textLabel?.text = allQuestions[0].getQuestion(index: indexPath.row).question
         
         return cell
     }
