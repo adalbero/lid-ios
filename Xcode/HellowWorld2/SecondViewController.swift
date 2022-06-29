@@ -132,7 +132,7 @@ extension SecondViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let AlleVC = storyboard?.instantiateViewController(identifier: "third") as! AlleViewController
         AlleVC.allQuestions = [questionGroups[indexPath.section][indexPath.row]]
-        present(AlleVC, animated: true, completion: nil)
+        show(AlleVC, sender: self)//(AlleVC, animated: true, completion: nil)
 
        // print(questionGroups[indexPath.section][indexPath.row].getAllQuestionsString())
         
