@@ -58,8 +58,8 @@ class SecondViewController: UIViewController {
         var tempTheme: [String] = ["Bundesland"]
         
         sectionNames.append("Questions")
-        sectionNames.append("Themes")
-        sectionNames.append("Topic")
+        sectionNames.append("By Themes")
+        sectionNames.append("By Topic")
         
         
         for questionSlot in array{
