@@ -25,4 +25,8 @@ struct QuestionHolder{
     func getSize() -> Int{
         return questionsHolding.count
     }
+    
+    func getQuestion(index: Int) -> Questions {
+        return questionsHolding[index]
+    }
 }

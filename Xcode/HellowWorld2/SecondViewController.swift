@@ -100,6 +100,11 @@ class SecondViewController: UIViewController {
         }
         
         genericHolder.append(topicHolder.removeLast())
+        genericHolder.append(QuestionHolder(questions_to_hold: [genericHolder[0].getQuestion(index: Int.random(in: 0...300))], header: "Exercise", comment: "Random questions"))
+        for _ in 1...19 {
+            genericHolder[2].addQuestion(question_to_add: genericHolder[0].getQuestion(index: Int.random(in: 0...300)))
+        }
+        
         returnHolder.append(genericHolder)
         returnHolder.append(themeHolder.sorted(by: {$0.header > $1.header}))
         returnHolder.append(topicHolder.sorted(by: {$0.comment > $1.comment}))
